@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "CMU Serif";
+  src: url("cmunrm.otf");
+}
+
+@font-face {
+  font-family: "CMU Serif";
+  src: url("cmunti.otf");
+  font-style: italic;
+}
+
+body {
+  font-family: "CMU Serif";
+  font-size:   12pt;
+  text-align:  justify;
+  padding:     2em;
+  max-width:   40em;
+  margin:      0 auto;
+}
+
+li {
+  list-style: none;
+}

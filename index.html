@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta charset="UTF-8"> 
+  </head>
+  <body>
+    <p style="color:red;">work in progress</p>
+    <h2>Functions</h2>
+    <ul>
+      <li>1 ↦ 2</li>
+      <li>2 ↦ 4</li>
+      <li>3 ↦ 6</li>
+    </ul>
+    <p>
+    These arrows describe a relationship between a given number and the double of that number.  We can generalize this relationship with the expression
+    </p>
+    <blockquote>
+      <em>x</em> ↦ 2 × <em>x</em>
+    </blockquote>
+    <p>
+    which means <q><em>x</em> maps to two times <em>x</em></q>. This expression describes a <b>function</b> with an input and an output. We could give a name to this function, <em>double</em>, and aplly it like so
+    </p>
+    <ul>
+      <li><em>double</em>(1) = 2</li>
+      <li><em>double</em>(2) = 4</li>
+      <li><em>double</em>(3) = 6</li>
+    </ul>
+    <p>
+    Or we could forgo the use of a name, and apply the expression as an <b>anonymous function</b>, like so
+    </p>
+    <ul>
+      <li>(<em>x</em> ↦ 2 × <em>x</em>)(1) ↠ (2 × 1) = 2</li>
+      <li>(<em>x</em> ↦ 2 × <em>x</em>)(2) ↠ (2 × 2) = 4</li>
+      <li>(<em>x</em> ↦ 2 × <em>x</em>)(3) ↠ (2 × 3) = 6</li>
+    </ul>
+    <p>
+    When a function, such as (<em>x</em> ↦ 2 × <em>x</em>), is adjacent to an argument, such as 1, we apply the function to the argument, which results in a <b>reduction</b>, denoted by the <b>↠</b> symbol. We can use this process to create arbitrary anonymous functions, such as the square function
+    </p>
+    <ul>
+      <li>(<em>x</em> ↦ <em>x</em> × <em>x</em>)(1) ↠ (1 × 1) = 1</li>
+      <li>(<em>x</em> ↦ <em>x</em> × <em>x</em>)(2) ↠ (2 × 2) = 4</li>
+      <li>(<em>x</em> ↦ <em>x</em> × <em>x</em>)(3) ↠ (3 × 3) = 9</li>
+    </ul>
+    <p>
+      Or functions which return functions as their output
+    </p>
+    <blockquote>
+      (<em>x</em> ↦ (<em>y</em> ↦ <em>x</em> × <em>y</em>))
+    </blockquote>
+    <p>
+    If we call this function by the name <em>multiply</em>, we can see that <em>multiply</em>(2) will return <em>double</em>
+    <blockquote>
+      (<em>x</em> ↦ (<em>y</em> ↦ <em>x</em> × <em>y</em>))(2) ↠ (<em>x</em> ↦ 2 × <em>x</em>)
+    </blockquote>
+    <p>
+    and as such, that <em>multiply</em>(2)(5) will return <em>double</em>(5), which in turn returns 10.
+    </p>
+    <blockquote>
+      (<em>x</em> ↦ (<em>y</em> ↦ <em>x</em> × <em>y</em>))(2)(5) ↠ (<em>x</em> ↦ 2 × <em>x</em>)(5) ↠ (2 × 5) ↠ 10
+    </blockquote>
+    <p>
+    Anonymous functions each take exactly one argument, but may return functions taking new arguments, effectively creating multi-function arguments.
+    </p>
+    <p>
+    When a function is adjacent to an argument, we will call it an <b>application</b>. A function can return an application, such as the function (<em>x</em> ↦ (<em>y</em> ↦ <em>yx</em>)). We can reduce this expression like so
+    </p>
+    <blockquote>
+      (<em>x</em> ↦ (<em>y</em> ↦ <em>yx</em>))(2)(<em>x</em> ↦ 2 + <em>x</em>) ↠
+      <br>(<em>x</em> ↦ <em>x</em>(2))(<em>x</em> ↦ 2 + <em>x</em>) ↠
+      <br>(<em>x</em> ↦ 2 + <em>x</em>)(2) ↠
+      <br>(2 + 2) ↠
+      <br>4
+    </blockquote>
+    <p>
+    We can construct a function which reduces to itself when applied to itself.
+    </p>
+    <blockquote>
+      (<em>x</em> ↦ <em>xx</em>)(<em>x</em> ↦ <em>xx</em>) ↠ (<em>x</em> ↦ <em>xx</em>)(<em>x</em> ↦ <em>xx</em>) ↠ (<em>x</em> ↦ <em>xx</em>)(<em>x</em> ↦ <em>xx</em>) ↠ ...
+    </blockquote>
+    <p>
+    This expression has the property of never reducing to an expression which cannot be reduced. This property is useful in some cases, but not useful in others. To explore a system in which this property is impossible, let us introduce types.
+    </p>
+    <h2>Types</h2>
+    <p>
+    Let us state that 2 and 4 are of the type <em>number</em>. Since (<em>x</em> ↦ 2 × <em>x</em>)(2) is equal to 4, we know that (<em>x</em> ↦ 2 × <em>x</em>)(2) is of the type <em>number</em>.
+    </p>
+    <p>
+    (<em>x</em> ↦ 2 × <em>x</em>)(2) is a number, but (<em>x</em> ↦ 2 × <em>x</em>) is a function. We say that (<em>x</em> ↦ 2 × <em>x</em>) is of the type (<em>number</em> ↦ <em>number</em>), because when <em>x</em> is of the type <em>number</em>, (<em>x</em> ↦ 2 × <em>x</em>)(<em>x</em>) is of the type <em>number</em>.
+    </p>
+    <p>
+    As a rule, if <em>f</em> is of the type (<em>σ</em> ↦ <em>τ</em>), and <em>x</em> is of the type <em>σ</em>, then <em>f</em>(<em>x</em>) is of the type <em>τ</em>. This is the case regardless of whether <em>σ</em> and <em>τ</em> are identical.
+    </p>
+    <p>To produce (<em>x</em> ↦ <em>xx</em>), we must assume that <em>x</em> has some type, which we might call <em>σ</em>, and that <em>xx</em> has some type, which we can call <em>τ</em>. (<em>x</em> ↦ <em>xx</em>) must be of the type (<em>σ</em> ↦ <em>τ</em>), meaning that it only takes arguments of type <em>σ</em>, not (<em>σ</em> ↦ <em>τ</em>). No function can take itself as an argument, meaning every series of reductions must eventually terminate.
+    <h2>Proofs</h2>
+    <p>
+    If we know that <em>successor</em> is of the type (<em>number</em> ↦ <em>number</em>), and that 0 is of the type <em>number</em>, we know that <em>successor</em>(0) is of the type <em>number</em>, and from that we know that <em>successor</em>(<em>successor</em>(0)) is of the type <em>number</em>, and that <em>successor</em>(<em>successor</em>(<em>successor</em>(0))) is of the type <em>number</em>, etc.
+    </p>
+    <p>
+    We call 0 and <em>successor</em>(N), where N is of the type <em>number</em>, the two base cases of the type <em>number</em>. If a property is proven for all base cases of a type, it is proven for all potential instances of that type.
+    </p>
+  </body>
+</html>
